@@ -553,19 +553,21 @@
 
     </div>
 
-    <form class="contact-form">
+    <form id="contact-form" class="contact-form">
 
-      <input type="text" placeholder="Ihr Name" required>
+  <input type="text" name="name" placeholder="Ihr Name" required>
 
-      <input type="email" placeholder="Ihre E-Mail" required>
+  <input type="email" name="email" placeholder="Ihre E-Mail" required>
 
-      <textarea placeholder="Ihre Nachricht" required></textarea>
+  <textarea name="message" placeholder="Ihre Nachricht" required></textarea>
 
-      <button type="submit">
-        Nachricht senden
-      </button>
+  <button type="submit">
+    Nachricht senden
+  </button>
 
-    </form>
+</form>
+
+<div id="form-message"></div>
 
   </section>
 
