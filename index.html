@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tari Transporte</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --dark-blue:#0A2540;
+      --light-blue:#3FA9F5;
+      --orange:#FF8A00;
+      --white:#FFFFFF;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:var(--dark-blue);
+      color:var(--white);
+      overflow-x:hidden;
+    }
+
+    /* NAVIGATION */
+
+    nav{
+      width:100%;
+      padding:22px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      z-index:1000;
+      background:rgba(10,37,64,0.75);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo{
+      color:var(--light-blue);
+      font-size:28px;
+      font-weight:700;
+    }
+
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:35px;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:var(--white);
+      font-size:16px;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:var(--orange);
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:120px 20px 80px;
+      background:
+      linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+      url('https://wallpapercave.com/wp/wp1917634.jpg');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{
+      max-width:1200px;
+    }
+
+    .hero-logo{
+      width:1337px;
+      max-width:95%;
+      margin-bottom:35px;
+      filter:drop-shadow(0 10px 30px rgba(0,0,0,0.45));
+    }
+
+    .hero-content p{
+      font-size:24px;
+      color:#d7e7f7;
+      line-height:1.8;
+      max-width:900px;
+      margin:auto;
+    }
+
+    .hero-buttons{
+      margin-top:45px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:17px 34px;
+      border-radius:14px;
+      text-decoration:none;
+      font-size:16px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn-orange{
+      background:var(--orange);
+      color:var(--white);
+    }
+
+    .btn-orange:hover{
+      background:#ffa333;
+      transform:translateY(-4px);
+    }
+
+    .btn-blue{
+      border:2px solid var(--light-blue);
+      color:var(--white);
+    }
+
+    .btn-blue:hover{
+      background:var(--light-blue);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:110px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .section-title h2{
+      font-size:44px;
+      color:var(--light-blue);
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      color:#cfe2f3;
+      font-size:18px;
+    }
+
+    /* SERVICES */
+
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .service-box{
+      background:#13385f;
+      padding:40px 30px;
+      border-radius:24px;
+      transition:0.4s;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .service-box:hover{
+      transform:translateY(-10px);
+      border-color:var(--orange);
+      box-shadow:0 20px 45px rgba(0,0,0,0.25);
+    }
+
+    .service-box h2{
+      font-size:24px;
+      margin-bottom:18px;
+    }
+
+    .service-box p{
+      color:#d7e7f7;
+      line-height:1.8;
+    }
+
+    /* ABOUT */
+
+    .about{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:70px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:28px;
+      box-shadow:0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    .about-text h2{
+      font-size:44px;
+      margin-bottom:25px;
+      color:var(--light-blue);
+    }
+
+    .about-text p{
+      color:#d7e7f7;
+      line-height:1.9;
+      margin-bottom:22px;
+      font-size:17px;
+    }
+
+    /* CONTACT */
+
+    .contact-form{
+      max-width:750px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      padding:20px;
+      background:#13385f;
+      border:none;
+      border-radius:16px;
+      color:var(--white);
+      font-size:16px;
+      outline:none;
+    }
+
+    .contact-form textarea{
+      resize:none;
+      height:180px;
+    }
+
+    .contact-form button{
+      background:var(--orange);
+      color:var(--white);
+      border:none;
+      padding:20px;
+      border-radius:16px;
+      font-size:17px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .contact-form button:hover{
+      background:#ffa333;
+    }
+
+    /* LEGAL */
+
+    .legal-box{
+      background:#13385f;
+      padding:40px;
+      border-radius:24px;
+      max-width:1000px;
+      margin:auto;
+      line-height:2;
+      color:#d7e7f7;
+    }
+
+    .legal-box h3{
+      color:var(--light-blue);
+      margin-top:30px;
+      margin-bottom:15px;
+    }
+
+    .legal-box a{
+      color:var(--light-blue);
+      text-decoration:none;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#07192c;
+      padding:35px;
+      text-align:center;
+      color:#aac0d5;
+      border-top:1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-links{
+      margin-top:15px;
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a{
+      color:var(--light-blue);
+      text-decoration:none;
+    }
+
+    .footer-links a:hover{
+      color:var(--orange);
+    }
+
+    /* WHATSAPP */
+
+    .whatsapp-button{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      background:#25D366;
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:32px;
+      color:white;
+      text-decoration:none;
+      box-shadow:0 10px 25px rgba(0,0,0,0.3);
+      z-index:1000;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      nav ul{
+        gap:20px;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .hero-content p{
+        font-size:18px;
+      }
+
+      .section-title h2{
+        font-size:34px;
+      }
+
+      .about-text h2{
+        font-size:34px;
+      }
+
+      section{
+        padding:90px 6%;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+
+    <div class="logo">
+      Tari Transporte
+    </div>
+
+    <ul>
+      <li><a href="#">Start</a></li>
+      <li><a href="#leistungen">Leistungen</a></li>
+      <li><a href="#about">Über Uns</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="#impressum">Impressum</a></li>
+    </ul>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <img
+        src="https://cdn.discordapp.com/attachments/1014236615356461147/1509640755805687958/ChatGPT_Image_28._Mai_2026_21_32_33.png?ex=6a19ea03&is=6a189883&hm=132a7faef0a89f95d880b296944ce63a7f7efedc5f0b831346d79176edf3669d&"
+        alt="Tari Transporte Logo"
+        class="hero-logo"
+      >
+
+      <p>
+        Schnell. Sicher. Zuverlässig.
+        Ihr professioneller Partner für Kurierfahrten,
+        Medikamententransporte und europaweite Logistiklösungen.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#kontakt" class="btn btn-orange">
+          Jetzt anfragen
+        </a>
+
+        <a href="tel:+4917623873142" class="btn btn-blue">
+          Sofort anrufen
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- LEISTUNGEN -->
+
+  <section id="leistungen">
+
+    <div class="section-title">
+
+      <h2>Unsere Leistungen</h2>
+
+      <p>
+        Flexible und professionelle Transportlösungen für Unternehmen und Privatkunden.
+      </p>
+
+    </div>
+
+    <div class="services">
+
+      <div class="service-box">
+        <h2>Medikamenten Transporte</h2>
+        <p>
+          GDP-konforme Transporte von Medikamenten und sensiblen Waren im Temperaturbereich von 8 bis 20 Grad Celsius.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <h2>Kurier- & Direktfahrten</h2>
+        <p>
+          Schnelle Same-Day-Lieferungen im Rhein-Main-Gebiet sowie europaweite Direkttransporte ohne Umwege.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <h2>Zeitungsauslieferung</h2>
+        <p>
+          Tägliche Belieferung von REWE, LIDL und zahlreichen Kiosken mit Zeitungen und Presseprodukten.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <h2>Europaweite Transporte</h2>
+        <p>
+          Flexible Transportlösungen innerhalb Deutschlands und europaweit.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <h2>Gefahrguttransporte</h2>
+        <p>
+          Sicherer Transport von Gefahrgutaufträgen bis 1000 Punkte nach gesetzlichen Vorschriften.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <h2>Lager & Kommissionierung</h2>
+        <p>
+          Übernahme von Kommissionierungs- und Lageraufträgen für Unternehmen und Geschäftspartner.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <h2>Flexible Fahrzeugflotte</h2>
+        <p>
+          Über 30 moderne Fahrzeuge für individuelle Transportlösungen jeder Art.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <h2>Tägliche Transportleistung</h2>
+        <p>
+          Mit über 200 Touren täglich sorgen wir für zuverlässige Logistiklösungen im Rhein-Main-Gebiet und europaweit.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="about">
+
+      <img
+        src="https://cdn.discordapp.com/attachments/1014236615356461147/1509644659058802830/ChatGPT_Image_28._Mai_2026_21_48_32.png?ex=6a19eda6&is=6a189c26&hm=1443956359447d7b91df6b0b3dcc96b7e0597404c88a5322d859f2cfbcda618d&"
+        alt="Transport"
+      >
+
+      <div class="about-text">
+
+        <h2>Über Tari Transporte</h2>
+
+        <p>
+          Tari Transporte ist ein familiengeführtes Transportunternehmen mit über 20 Jahren Erfahrung in der Transport- und Logistikbranche.
+        </p>
+
+        <p>
+          Seit 2006 stehen wir für Zuverlässigkeit, Flexibilität und pünktliche Lieferungen im gesamten Rhein-Main-Gebiet sowie europaweit.
+        </p>
+
+        <p>
+          Unsere moderne Fahrzeugflotte besteht aus über 30 Fahrzeugen, darunter GDP-konforme Fahrzeuge für Medikamententransporte.
+        </p>
+
+        <p>
+          Mit starken Partnern, täglichen Touren und flexiblen Transportlösungen bringen wir jede Fracht sicher und termingerecht an ihr Ziel.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- KONTAKT -->
+
+  <section id="kontakt">
+
+    <div class="section-title">
+
+      <h2>Kontakt</h2>
+
+      <p>
+        Schreiben Sie uns direkt für ein Angebot oder eine Anfrage.
+      </p>
+
+    </div>
+
+    <form class="contact-form">
+
+      <input type="text" placeholder="Ihr Name" required>
+
+      <input type="email" placeholder="Ihre E-Mail" required>
+
+      <textarea placeholder="Ihre Nachricht" required></textarea>
+
+      <button type="submit">
+        Nachricht senden
+      </button>
+
+    </form>
+
+  </section>
+
+  <!-- IMPRESSUM -->
+
+  <section id="impressum">
+
+    <div class="section-title">
+      <h2>Impressum & Datenschutz</h2>
+    </div>
+
+    <div class="legal-box">
+
+      <h3>Angaben gemäß § 5 TMG</h3>
+
+      <p>
+        Tari Transporte<br>
+        Einzelunternehmen<br>
+        Inhaber: Celal Can Tari
+      </p>
+
+      <p>
+        Toni-Sender-Straße 10<br>
+        65936 Frankfurt am Main<br>
+        Deutschland
+      </p>
+
+      <p>
+        Telefon: 0176 23873142<br>
+        E-Mail: celalcantari@tari-transporte.com
+      </p>
+
+      <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+
+      <p>
+        Celal Can Tari<br>
+        Toni-Sender-Straße 10<br>
+        65936 Frankfurt am Main
+      </p>
+
+      <h3>EU-Streitschlichtung</h3>
+
+      <p>
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank">
+          https://ec.europa.eu/consumers/odr/
+        </a>
+      </p>
+
+      <h3>Verbraucherstreitbeilegung</h3>
+
+      <p>
+        Wir sind nicht bereit oder verpflichtet,
+        an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
+
+      <h3>Datenschutz</h3>
+
+      <p>
+        Beim Besuch dieser Website werden automatisch Informationen durch den Hosting-Provider erfasst.
+      </p>
+
+      <p>
+        Wenn Sie uns per E-Mail oder Kontaktformular kontaktieren,
+        werden Ihre Angaben zwecks Bearbeitung der Anfrage gespeichert.
+      </p>
+
+      <p>
+        Diese Website verwendet Cookies und SSL-/TLS-Verschlüsselung zur sicheren Datenübertragung.
+      </p>
+
+    </div>
+
+  </section>
+
+<footer>
+  © 2026 Tari Transporte • Alle Rechte vorbehalten
+</footer>
+
+<a
+  href="https://wa.me/4917623873142"
+  class="whatsapp-button"
+  target="_blank"
+>
+  ✆
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+
+emailjs.init({
+  publicKey: "xcjf9swNgfdv4qy39"
+});
+
+const form = document.getElementById("contact-form");
+const message = document.getElementById("form-message");
+
+form.addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  message.innerHTML = "⏳ Nachricht wird gesendet...";
+  message.style.color = "#FFFFFF";
+
+  emailjs.sendForm(
+    "service_mh7db58",
+    "template_6i8enzd",
+    this
+  )
+
+  .then(() => {
+
+    return emailjs.send(
+      "service_mh7db58",
+      "template_ys0cgum",
+      {
+        name: form.elements["name"].value,
+        email: form.elements["email"].value,
+        message: form.elements["message"].value
+      }
+    );
+
+  })
+
+  .then(() => {
+
+    message.innerHTML =
+      "✅ Vielen Dank! Ihre Anfrage wurde erfolgreich übermittelt.";
+
+    message.style.color = "#3FA9F5";
+
+    form.reset();
+
+  })
+
+  .catch((error) => {
+
+    console.error(error);
+
+    message.innerHTML =
+      "❌ Fehler beim Versenden. Bitte versuchen Sie es erneut.";
+
+    message.style.color = "#FF8A00";
+
+  });
+
+});
+
+</script>
